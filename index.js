@@ -26,7 +26,6 @@ function url2png(apiKey, privateKey) {
     }
     lib.readURL = readURL;
     function readURL(url, width, height, type) {
-        console.log('get', buildURL(url, width, height, (type || 'http')));
         return request(buildURL(url, width, height, (type || 'http')));
     }
     return lib;
