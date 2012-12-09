@@ -1,6 +1,6 @@
 {
   "name": "url2png",
-  "version": "0.0.1",
+  "version": "0.0.2-pre",
   "description": "node.js API for the URL2PNG online service",
   "main": "index.js",
   "dependencies": {
@@ -29,7 +29,8 @@
     "name": "Forbes Lindesay"
   },
   "contributors": [
-    { "name": "Pato Jutard", "email": "pato@mural.ly" }
+    { "name": "Pato Jutard", "email": "pato@mural.ly" },
+    { "name": "Johnny Halife", "email": "johnny@mural.ly" }
   ],
   "license": "BSD"
 }
