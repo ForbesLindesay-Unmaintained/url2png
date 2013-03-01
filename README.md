@@ -1,3 +1,4 @@
+<img src="http://api.url2png.com/v6/P502E17508FBBD/d7317fb8001a6c188b026ee0d84d5c63/png/?url=https%3A%2F%2Fgithub.com%2FForbesLindesay%2Furl2png" width="250px" align="right" />
 url2png
 =======
 
@@ -18,28 +19,16 @@ Usage
 ```javascript
 var url2png = require('url2png')('API_KEY', 'PRIVATE_KEY');
 
-var screenshotUrl = url2png.buildURL(url, options, type);
+var screenshotUrl = url2png.buildURL(url, options);
 
+var screenshotStream = url2png.readURL(url, options);
 ```
 
 ## Params
+
 ### Url
-<table>
-  <thead>
-    <tr>
-      <th style="width: 100px;">Name</th>
-      <th style="width: 50px;">type</th>
-      <th>description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>url</td>
-      <td>string</td>
-      <td>The <a href="https://www.google.com/search?q=urlencoded" target="_blank">url encoded</a> target url.</td>
-    </tr>
-  </tbody>
-</table>
+
+  The target url as a string.
 
 ### Options
 <table>
@@ -82,23 +71,11 @@ var screenshotUrl = url2png.buildURL(url, options, type);
       <td>false</td>
       <td>Shall we use the cached version if it already exists?</td>
     </tr>
-  </tbody>
-</table>
-
-### Type
-<table>
-  <thead>
     <tr>
-      <th style="width: 100px;">Name</th>
-      <th style="width: 50px;">type</th>
-      <th>description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>type</td>
+      <td>protocol</td>
       <td>string</td>
-      <td>'http', 'https' or empty for protocol-relative.</td>
+      <td>-</td>
+      <td>The protocol to use, can be 'https' or 'http' (blank to use protocol relative urls).</td>
     </tr>
   </tbody>
 </table>
@@ -108,24 +85,23 @@ var screenshotUrl = url2png.buildURL(url, options, type);
 var url2png = require('url2png')('API_KEY', 'PRIVATE_KEY');
 
 var options = {
-	viewport : '900x600',
-	thumbnail_max_width : 400
+  viewport : '900x600',
+  thumbnail_max_width : 400,
+  protocol: 'http'
 }
 
-var type = 'http';
-
 //Get the URL
-var url = url2png.buildURL('google.com' options, type);
+var url = url2png.buildURL('google.com' options);
 
 //...or download the image to a file
 var fs = require('fs');
-url2png.readURL('google.com' options, type).pipe(fs.createWriteStream('google.png'));
+url2png.readURL('google.com' options).pipe(fs.createWriteStream('google.png'));
 
 //...or send the image in the http response
 var http = require('http');
 http.createServer(function (req, res) {
   if (req.url === '/google.png') {
-    url2png.readURL('google.com' options, type).pipe(res)
+    url2png.readURL('google.com' options).pipe(res)
   }
 });
 

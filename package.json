@@ -1,6 +1,6 @@
 {
   "name": "url2png",
-  "version": "0.0.2-pre",
+  "version": "6.0.0",
   "description": "node.js API for the URL2PNG online service",
   "main": "index.js",
   "dependencies": {

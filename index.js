@@ -8,30 +8,32 @@ function url2png(apiKey, privateKey) {
     var format = 'png'
     var lib = {};
 
-    function buildURL(url, options, type) {
+    function buildURL(url, options) {
+        options = options || {};
         if(typeof url !== 'string') throw new Error('url should be of type string (something like www.google.com)');
         if(options.viewport && (typeof options.viewport !== 'string' || !options.viewport.match(/\d+x\d+/))) throw new Error('viewport should be a string with the format "{width}x{height}"');
         if(options.fullpage && typeof options.fullpage !== 'boolean') throw new Error('fullpage should be a boolean');
         if(options.thumbnail_max_width && typeof options.thumbnail_max_width !== 'number') throw new Error('thumbnail_max_width should be a number in pixels');
         if(options.delay && typeof options.delay !== 'number') throw new Error('delay should be a number in seconds');
         if(options.force && typeof options.force !== 'boolean') throw new Error('force should be a boolean');
-        if(typeof type === 'undefined') type = '';
-        if(typeof type !== 'string' || (type !== 'http' && type !== 'https' && type !== '')) {
-            throw new Error('If a type is provided it must be either the string \'http\', the ' + 'string \'https\' or the empty string if you want urls to be protocol-relative.  ' + 'You should probably go for domain relative if you are using it directly in a web ' + 'page.');
-        }
+        if(options.protocol && options.protocol != 'https' && options.protocol != 'http') throw new Error('protocol should either be "https" or "http"');
+        options.protocol = options.protocol || '';
 
         url = 'url=' + encodeURIComponent(url);
         var optionsQuery = '';
         for(var option in options) {
-            optionsQuery += "&" + [option, options[option]].join('=');
+            if (option != 'protocol')
+                optionsQuery += "&" + [option, options[option]].join('=');
         }
 
         var securityHash = crypto.createHash('md5').update('?' + url + optionsQuery + privateKey).digest("hex");
-        return type + (type ? ':' : '') + prefix + apiKey + '/' + securityHash + '/' + format + '/?' + url + optionsQuery;
+        return (options.protocol ? options.protocol + ':' : '') + prefix + apiKey + '/' + securityHash + '/' + format + '/?' + url + optionsQuery;
     }
 
-    function readURL(url, options, type) {
-        return request(buildURL(url, options, (type || 'http')));
+    function readURL(url, options) {
+        options = options || {};
+        options.protocol = options.protocol || 'https';
+        return request(buildURL(url, options));
     }
 
     lib.buildURL = buildURL;
