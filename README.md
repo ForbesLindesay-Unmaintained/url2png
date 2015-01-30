@@ -28,7 +28,7 @@ var screenshotStream = url2png.readURL(url, options);
 
 ### Url
 
-  The target url as a string.
+  The target url as a non-escaped string.
 
 ### Options
 <table>
@@ -91,17 +91,17 @@ var options = {
 }
 
 //Get the URL
-var url = url2png.buildURL('google.com' options);
+var url = url2png.buildURL('google.com', options);
 
 //...or download the image to a file
 var fs = require('fs');
-url2png.readURL('google.com' options).pipe(fs.createWriteStream('google.png'));
+url2png.readURL('google.com', options).pipe(fs.createWriteStream('google.png'));
 
 //...or send the image in the http response
 var http = require('http');
 http.createServer(function (req, res) {
   if (req.url === '/google.png') {
-    url2png.readURL('google.com' options).pipe(res)
+    url2png.readURL('google.com', options).pipe(res)
   }
 });
 
