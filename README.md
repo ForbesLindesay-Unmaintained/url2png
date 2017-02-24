@@ -2,6 +2,8 @@
 url2png
 =======
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ForbesLindesay/url2png.svg)](https://greenkeeper.io/)
+
 node.js library for url2png
 
 Get your account at [http://url2png.com/](http://url2png.com/)
