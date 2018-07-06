@@ -1,36 +1,32 @@
 {
-  "name": "url2png",
-  "version": "6.0.2",
-  "description": "node.js API for the URL2PNG online service",
-  "main": "index.js",
-  "dependencies": {
-    "request": ">=2.53.0 <3.0.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ForbesLindesay/url2png.git"
-  },
-  "keywords": [
-    "url2png",
-    "url",
-    "png",
-    "websnapr",
-    "shrinktheweb",
-    "thumbalizr",
-    "webthumb",
-    "browsershots",
-    "cutycapt"
-  ],
-  "author": {
-    "name": "Forbes Lindesay"
-  },
-  "contributors": [
-    { "name": "Pato Jutard", "email": "pato@mural.ly" },
-    { "name": "Johnny Halife", "email": "johnny@mural.ly" }
-  ],
-  "license": "BSD"
+    "name": "@mpurusottamc/url2png",
+    "version": "6.0.3",
+    "description": "node.js API for the URL2PNG online service",
+    "main": "index.js",
+    "dependencies": {
+        "request": ">=2.53.0 <3.0.0"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mpurusottamc/url2png.git"
+    },
+    "keywords": [
+        "url2png",
+        "url",
+        "png",
+        "websnapr",
+        "shrinktheweb",
+        "thumbalizr",
+        "webthumb",
+        "browsershots",
+        "cutycapt"
+    ],
+    "author": {
+        "name": "Purusottam Mupunu"
+    },
+    "license": "BSD"
 }

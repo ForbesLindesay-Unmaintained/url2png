@@ -10,18 +10,18 @@ function url2png(apiKey, privateKey) {
 
     function buildURL(url, options) {
         options = options || {};
-        if(typeof url !== 'string') throw new Error('url should be of type string (something like www.google.com)');
-        if(options.viewport && (typeof options.viewport !== 'string' || !options.viewport.match(/\d+x\d+/))) throw new Error('viewport should be a string with the format "{width}x{height}"');
-        if(options.fullpage && typeof options.fullpage !== 'boolean') throw new Error('fullpage should be a boolean');
-        if(options.thumbnail_max_width && typeof options.thumbnail_max_width !== 'number') throw new Error('thumbnail_max_width should be a number in pixels');
-        if(options.delay && typeof options.delay !== 'number') throw new Error('delay should be a number in seconds');
-        if(options.force && typeof options.force !== 'boolean') throw new Error('force should be a boolean');
-        if(options.protocol && options.protocol != 'https' && options.protocol != 'http') throw new Error('protocol should either be "https" or "http"');
-        options.protocol = options.protocol || '';
+        if (typeof url !== 'string') throw new Error('url should be of type string (something like www.google.com)');
+        if (options.viewport && (typeof options.viewport !== 'string' || !options.viewport.match(/\d+x\d+/))) throw new Error('viewport should be a string with the format "{width}x{height}"');
+        if (options.fullpage && typeof options.fullpage !== 'boolean') throw new Error('fullpage should be a boolean');
+        if (options.thumbnail_max_width && typeof options.thumbnail_max_width !== 'number') throw new Error('thumbnail_max_width should be a number in pixels');
+        if (options.delay && typeof options.delay !== 'number') throw new Error('delay should be a number in seconds');
+        if (options.force && typeof options.force !== 'boolean') throw new Error('force should be a boolean');
+        if (options.protocol && options.protocol != 'https' && options.protocol != 'http') throw new Error('protocol should either be "https" or "http"');
+        options.protocol = options.protocol || 'https';
 
         url = 'url=' + encodeURIComponent(url);
         var optionsQuery = '';
-        for(var option in options) {
+        for (var option in options) {
             if (option != 'protocol')
                 optionsQuery += "&" + [option, options[option]].join('=');
         }

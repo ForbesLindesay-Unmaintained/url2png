@@ -75,7 +75,7 @@ var screenshotStream = url2png.readURL(url, options);
       <td>protocol</td>
       <td>string</td>
       <td>-</td>
-      <td>The protocol to use, can be 'https' or 'http' (blank to use protocol relative urls).</td>
+      <td>The protocol to use, can be 'https' or 'http'. Default 'https'.</td>
     </tr>
   </tbody>
 </table>
